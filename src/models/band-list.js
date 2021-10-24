@@ -31,7 +31,7 @@ class BandList {
     /* Método para agregar un voto a una banda po id */
     increaseVotes(id) {
         this.bands = this.bands.map(band => {
-            if (band.id === id) band.vote += 1;
+            if (band.id === id) band.votes += 1;
             return band;
         })
     }
