@@ -42,6 +42,14 @@ class Sockets {
                 /* Emitir al cliente conectado, todas las bandas actuales */
                 this.io.emit('current-bands', this.bandList.getBands());
             });
+
+            /* Escuchar evento - agregar nueva banda */
+            socket.on('create-new-band', ({name}) => {
+                this.bandList.addBand(name);
+
+                /* Emitir al cliente conectado, todas las bandas actuales */
+                this.io.emit('current-bands', this.bandList.getBands());
+            });
         });
     }
 }
