@@ -26,6 +26,14 @@ class Sockets {
                 /* Emitir al cliente conectado, todas las bandas actuales */
                 this.io.emit('current-bands', this.bandList.getBands());
             });
+
+            /* Escuchar evento - eliminar banda */
+            socket.on('delete-band', (id) => {
+                this.bandList.removeBand(id);
+
+                /* Emitir al cliente conectado, todas las bandas actuales */
+                this.io.emit('current-bands', this.bandList.getBands());
+            });
         });
     }
 }
