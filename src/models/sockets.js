@@ -34,6 +34,14 @@ class Sockets {
                 /* Emitir al cliente conectado, todas las bandas actuales */
                 this.io.emit('current-bands', this.bandList.getBands());
             });
+
+            /* Escuchar evento - cambiar nombre de banda */
+            socket.on('change-name-band', ({id, name}) => {
+                this.bandList.changeName(id, name);
+
+                /* Emitir al cliente conectado, todas las bandas actuales */
+                this.io.emit('current-bands', this.bandList.getBands());
+            });
         });
     }
 }
